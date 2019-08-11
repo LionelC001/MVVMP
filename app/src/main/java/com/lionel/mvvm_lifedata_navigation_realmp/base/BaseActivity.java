@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public abstract class BaseActivity  extends AppCompatActivity {
     protected abstract void initDataBinding();
     protected abstract void initToolbar();
+    protected abstract void initNavigationComponent();
+    protected abstract void initBottomNavigation();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -14,5 +16,7 @@ public abstract class BaseActivity  extends AppCompatActivity {
 
         initDataBinding();
         initToolbar();
+        initNavigationComponent();
+        initBottomNavigation();
     }
 }
