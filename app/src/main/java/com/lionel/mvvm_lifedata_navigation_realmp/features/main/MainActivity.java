@@ -1,4 +1,4 @@
-package com.lionel.mvvm_lifedata_navigation_realmp.features;
+package com.lionel.mvvm_lifedata_navigation_realmp.features.main;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.navigation.NavController;
