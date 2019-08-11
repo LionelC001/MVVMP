@@ -39,6 +39,8 @@ public abstract class BaseFragment extends Fragment {
     }
 
     private void initNavigationComponent() {
-        navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+        navController = Navigation.findNavController(getActivity(), getHostFragmentId());
     }
+
+    protected abstract int getHostFragmentId();
 }

@@ -24,6 +24,11 @@ public class feature4_1Fragment extends BaseFragment {
     }
 
     @Override
+    protected int getHostFragmentId() {
+        return R.id.navFeature4HostFragment;
+    }
+
+    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 

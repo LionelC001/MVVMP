@@ -23,6 +23,11 @@ public class Feature4Fragment extends BaseFragment {
     }
 
     @Override
+    protected int getHostFragmentId() {
+        return R.id.navMainHostFragment;
+    }
+
+    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
@@ -31,7 +36,7 @@ public class Feature4Fragment extends BaseFragment {
 
     private void initBtn() {
         ((FragmentFeature4Binding) dataBinding).btnNext.setOnClickListener(v -> {
-            navController.navigate(R.id.action_feature4Fragment_to_feature4_1Fragment);
+            navController.navigate(R.id.feature4Activity);
         });
     }
 }
