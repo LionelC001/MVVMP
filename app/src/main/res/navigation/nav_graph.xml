@@ -24,5 +24,40 @@
         android:id="@+id/feature4Fragment"
         android:name="com.lionel.mvvm_lifedata_navigation_realmp.features.feature4.Feature4Fragment"
         android:label="fragment_feature4"
-        tools:layout="@layout/fragment_feature4" />
+        tools:layout="@layout/fragment_feature4">
+        <action
+            android:id="@+id/action_feature4Fragment_to_feature4_1Fragment"
+            app:destination="@id/feature4_1Fragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popEnterAnim="@anim/fragment_fade_enter"
+            app:popExitAnim="@anim/fragment_fade_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/feature4_1Fragment"
+        android:name="com.lionel.mvvm_lifedata_navigation_realmp.features.feature4.feature4_1Fragment"
+        android:label="fragment_feature4_1"
+        tools:layout="@layout/fragment_feature4_1">
+        <action
+            android:id="@+id/action_feature4_1Fragment_to_feature4_2Fragment"
+            app:destination="@id/feature4_2Fragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popEnterAnim="@anim/fragment_fade_enter"
+            app:popExitAnim="@anim/fragment_fade_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/feature4_2Fragment"
+        android:name="com.lionel.mvvm_lifedata_navigation_realmp.features.feature4.Feature4_2Fragment"
+        android:label="fragment_feature4_2"
+        tools:layout="@layout/fragment_feature4_2">
+        <action
+            android:id="@+id/action_feature4_2Fragment_to_feature4Fragment"
+            app:destination="@id/feature4Fragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popEnterAnim="@anim/fragment_fade_enter"
+            app:popExitAnim="@anim/fragment_fade_exit"
+            app:popUpTo="@+id/feature4Fragment" />
+    </fragment>
 </navigation>

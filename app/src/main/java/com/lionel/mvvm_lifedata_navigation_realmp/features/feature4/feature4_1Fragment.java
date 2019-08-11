@@ -7,19 +7,20 @@ import androidx.annotation.Nullable;
 
 import com.lionel.mvvm_lifedata_navigation_realmp.R;
 import com.lionel.mvvm_lifedata_navigation_realmp.base.BaseFragment;
-import com.lionel.mvvm_lifedata_navigation_realmp.databinding.FragmentFeature4Binding;
+import com.lionel.mvvm_lifedata_navigation_realmp.databinding.FragmentFeature41Binding;
 
 
-public class Feature4Fragment extends BaseFragment {
+public class feature4_1Fragment extends BaseFragment {
 
 
-    public Feature4Fragment() {
+    public feature4_1Fragment() {
         // Required empty public constructor
     }
 
+
     @Override
     protected int getLayoutRes() {
-        return R.layout.fragment_feature4;
+        return R.layout.fragment_feature4_1;
     }
 
     @Override
@@ -30,8 +31,8 @@ public class Feature4Fragment extends BaseFragment {
     }
 
     private void initBtn() {
-        ((FragmentFeature4Binding) dataBinding).btnNext.setOnClickListener(v -> {
-            navController.navigate(R.id.action_feature4Fragment_to_feature4_1Fragment);
+        ((FragmentFeature41Binding) dataBinding).btnNext.setOnClickListener(v -> {
+            navController.navigate(R.id.action_feature4_1Fragment_to_feature4_2Fragment);
         });
     }
 }
