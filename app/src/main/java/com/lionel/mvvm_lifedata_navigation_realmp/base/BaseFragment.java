@@ -21,7 +21,8 @@ public abstract class BaseFragment extends Fragment {
     protected NavController navController;
 
     protected abstract int getLayoutRes();
-
+    protected abstract int getHostFragmentId();
+    protected abstract void initListener();
 
     @Nullable
     @Override
@@ -36,11 +37,12 @@ public abstract class BaseFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         initNavigationComponent();
+        initListener();
     }
+
+
 
     private void initNavigationComponent() {
         navController = Navigation.findNavController(getActivity(), getHostFragmentId());
     }
-
-    protected abstract int getHostFragmentId();
 }

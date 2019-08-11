@@ -28,13 +28,7 @@ public class Feature4Fragment extends BaseFragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        initBtn();
-    }
-
-    private void initBtn() {
+    protected void initListener() {
         ((FragmentFeature4Binding) dataBinding).btnNext.setOnClickListener(v -> {
             navController.navigate(R.id.feature4Activity);
         });

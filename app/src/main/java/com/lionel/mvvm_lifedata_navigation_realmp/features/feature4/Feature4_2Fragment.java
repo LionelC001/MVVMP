@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import com.lionel.mvvm_lifedata_navigation_realmp.R;
 import com.lionel.mvvm_lifedata_navigation_realmp.base.BaseFragment;
 import com.lionel.mvvm_lifedata_navigation_realmp.databinding.FragmentFeature42Binding;
+import com.lionel.mvvm_lifedata_navigation_realmp.databinding.FragmentFeature4Binding;
 
 
 public class Feature4_2Fragment extends BaseFragment {
@@ -27,15 +28,9 @@ public class Feature4_2Fragment extends BaseFragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        initBtn();
-    }
-
-    private void initBtn() {
-        ((FragmentFeature42Binding) dataBinding).btnClose.setOnClickListener(v -> {
-           getActivity().finish();
+    protected void initListener() {
+        ((FragmentFeature42Binding) dataBinding).btnNext.setOnClickListener(v -> {
+            navController.navigate(R.id.action_feature4_2Fragment_to_feature4_3Fragment);
         });
     }
 }
