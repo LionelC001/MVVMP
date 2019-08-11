@@ -12,17 +12,17 @@
         tools:layout="@layout/fragment_feature1" />
     <fragment
         android:id="@+id/feature2Fragment"
-        android:name="com.lionel.mvvm_lifedata_navigation_realmp.Feature2Fragment"
+        android:name="com.lionel.mvvm_lifedata_navigation_realmp.features.feature2.Feature2Fragment"
         android:label="fragment_feature2"
         tools:layout="@layout/fragment_feature2" />
     <fragment
         android:id="@+id/feature3Fragment"
-        android:name="com.lionel.mvvm_lifedata_navigation_realmp.Feature3Fragment"
+        android:name="com.lionel.mvvm_lifedata_navigation_realmp.features.feature3.Feature3Fragment"
         android:label="fragment_feature3"
         tools:layout="@layout/fragment_feature3" />
     <fragment
         android:id="@+id/feature4Fragment"
-        android:name="com.lionel.mvvm_lifedata_navigation_realmp.Feature4Fragment"
+        android:name="com.lionel.mvvm_lifedata_navigation_realmp.features.feature4.Feature4Fragment"
         android:label="fragment_feature4"
         tools:layout="@layout/fragment_feature4" />
 </navigation>
