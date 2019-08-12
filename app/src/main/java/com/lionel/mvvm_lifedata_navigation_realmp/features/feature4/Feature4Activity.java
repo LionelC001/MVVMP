@@ -3,12 +3,14 @@ package com.lionel.mvvm_lifedata_navigation_realmp.features.feature4;
 import android.view.View;
 
 import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.lionel.mvvm_lifedata_navigation_realmp.R;
 import com.lionel.mvvm_lifedata_navigation_realmp.base.BaseActivity;
 import com.lionel.mvvm_lifedata_navigation_realmp.databinding.ActivityFeature4Binding;
+import com.lionel.mvvm_lifedata_navigation_realmp.databinding.ActivityMainBinding;
 
 public class Feature4Activity extends BaseActivity {
 
@@ -16,8 +18,13 @@ public class Feature4Activity extends BaseActivity {
     private NavController navController;
 
     @Override
-    protected void initDataBinding() {
-        dataBinding = DataBindingUtil.setContentView(Feature4Activity.this, R.layout.activity_feature4);
+    protected int getLayoutRes() {
+        return R.layout.activity_feature4;
+    }
+
+    @Override
+    protected void initView(ViewDataBinding dataBinding) {
+        this.dataBinding = (ActivityFeature4Binding) dataBinding;
     }
 
     @Override
