@@ -36,4 +36,16 @@
         android:name="com.lionel.mvvm_lifedata_navigation_realmp.features.feature4.Feature4_3Fragment"
         android:label="fragment_feature4_3"
         tools:layout="@layout/fragment_feature4_3" />
+    <fragment
+        android:id="@+id/QRFragment"
+        android:name="com.lionel.mvvm_lifedata_navigation_realmp.features.qr.QRFragment"
+        android:label="fragment_qr"
+        tools:layout="@layout/fragment_qr" />
+    <action
+        android:id="@+id/action_global_QRFragment"
+        app:destination="@id/QRFragment"
+        app:enterAnim="@anim/enter_slide_down"
+        app:exitAnim="@anim/exit_slide_down"
+        app:popEnterAnim="@anim/enter_slide_up"
+        app:popExitAnim="@anim/exit_slide_up" />
 </navigation>

@@ -1,5 +1,7 @@
 package com.lionel.mvvm_lifedata_navigation_realmp.features.feature4;
 
+import android.view.View;
+
 import androidx.databinding.DataBindingUtil;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -21,6 +23,11 @@ public class Feature4Activity extends BaseActivity {
     @Override
     protected void initToolbar() {
         dataBinding.layoutToolbar.txtTitle.setText("Feature 4");
+        dataBinding.layoutToolbar.imgBack.setVisibility(View.VISIBLE);
+        dataBinding.layoutToolbar.imgBack.setOnClickListener(v -> onBackPressed());
+        dataBinding.layoutToolbar.btnRight.setVisibility(View.VISIBLE);
+        dataBinding.layoutToolbar.btnRight.setImageResource(R.drawable.ic_qr);
+        dataBinding.layoutToolbar.btnRight.setOnClickListener(v ->   navController.navigate(R.id.action_global_QRFragment));
     }
 
     @Override

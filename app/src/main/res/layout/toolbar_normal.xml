@@ -36,7 +36,7 @@
             tools:ignore="ContentDescription" />
 
         <ImageView
-            android:id="@+id/BtnRight"
+            android:id="@+id/btn_right"
             style="?android:borderlessButtonStyle"
             android:layout_width="36dp"
             android:layout_height="36dp"
@@ -44,13 +44,10 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:focusable="true"
-            android:src="@drawable/ic_qr"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
