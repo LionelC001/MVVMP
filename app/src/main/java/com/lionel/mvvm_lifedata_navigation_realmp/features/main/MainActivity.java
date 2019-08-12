@@ -1,6 +1,6 @@
 package com.lionel.mvvm_lifedata_navigation_realmp.features.main;
 
-import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
@@ -15,8 +15,13 @@ public class MainActivity extends BaseActivity {
     private NavController navController;
 
     @Override
-    protected void initDataBinding() {
-        dataBinding = DataBindingUtil.setContentView(MainActivity.this, R.layout.activity_main);
+    protected int getLayoutRes() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initView(ViewDataBinding dataBinding) {
+        this.dataBinding = (ActivityMainBinding) dataBinding;
     }
 
     @Override
@@ -31,6 +36,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initBottomNavigation() {
-        NavigationUI.setupWithNavController( dataBinding.bottomNavigationView,navController);
+        NavigationUI.setupWithNavController(dataBinding.bottomNavigationView, navController);
     }
 }
