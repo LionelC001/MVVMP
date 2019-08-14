@@ -34,7 +34,10 @@ public class MainActivity extends BaseActivity {
         navController = Navigation.findNavController(MainActivity.this, R.id.navMainHostFragment);
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
             switch (destination.getId()) {
+                case R.id.feature1Fragment:
                 case R.id.feature2Fragment:
+                case R.id.feature3Fragment:
+                case R.id.feature4Fragment:
                     dataBinding.setIsShowBottomNavigation(true);
                     break;
                 default:

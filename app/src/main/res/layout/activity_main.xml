@@ -39,7 +39,7 @@
             android:layout_height="56dp"
             android:background="@color/colorGray"
             android:theme="@style/BottomNavigationTheme"
-            android:visibility="@{isShowBottomNavigation? View.GONE : View.VISIBLE}"
+            android:visibility="@{isShowBottomNavigation? View.VISIBLE : View.GONE}"
             app:itemIconSize="26dp"
             app:labelVisibilityMode="labeled"
             app:layout_constraintBottom_toBottomOf="parent"
