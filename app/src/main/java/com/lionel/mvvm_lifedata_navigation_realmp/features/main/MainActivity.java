@@ -20,8 +20,8 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void initView(ViewDataBinding dataBinding) {
-        this.dataBinding = (ActivityMainBinding) dataBinding;
+    protected void initView(ViewDataBinding baseDataBinding) {
+        this.dataBinding = (ActivityMainBinding) baseDataBinding;
     }
 
     @Override

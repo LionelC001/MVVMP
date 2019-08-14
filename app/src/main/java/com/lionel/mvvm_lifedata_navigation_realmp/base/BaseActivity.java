@@ -8,10 +8,10 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
 public abstract class BaseActivity extends AppCompatActivity {
-    private ViewDataBinding dataBinding;
+    private ViewDataBinding baseDataBinding;
 
     protected abstract int getLayoutRes();
-    protected abstract void initView(ViewDataBinding dataBinding);
+    protected abstract void initView(ViewDataBinding baseDataBinding);
     protected abstract void initToolbar();
     protected abstract void initNavigationComponent();
     protected abstract void initBottomNavigation();
@@ -19,9 +19,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dataBinding = DataBindingUtil.setContentView(BaseActivity.this, getLayoutRes());
+        baseDataBinding = DataBindingUtil.setContentView(BaseActivity.this, getLayoutRes());
 
-        initView(dataBinding);
+        initView(baseDataBinding);
         initToolbar();
         initNavigationComponent();
         initBottomNavigation();

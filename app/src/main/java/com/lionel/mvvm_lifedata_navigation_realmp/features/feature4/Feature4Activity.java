@@ -23,8 +23,8 @@ public class Feature4Activity extends BaseActivity {
     }
 
     @Override
-    protected void initView(ViewDataBinding dataBinding) {
-        this.dataBinding = (ActivityFeature4Binding) dataBinding;
+    protected void initView(ViewDataBinding baseDataBinding) {
+        this.dataBinding = (ActivityFeature4Binding) baseDataBinding;
     }
 
     @Override
