@@ -10,12 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.lionel.mvvm_lifedata_navigation_realmp.R;
+import com.lionel.mvvm_lifedata_navigation_realmp.base.BaseFragment;
+import com.lionel.mvvm_lifedata_navigation_realmp.databinding.FragmentFeature2Binding;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
-public class Feature2Fragment extends Fragment {
+public class Feature2Fragment extends BaseFragment {
 
 
     public Feature2Fragment() {
@@ -24,10 +22,17 @@ public class Feature2Fragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_feature2, container, false);
+    protected int getLayoutRes() {
+        return R.layout.fragment_feature2;
     }
 
+    @Override
+    protected int getHostFragmentId() {
+        return R.id.navMainHostFragment;
+    }
+
+    @Override
+    protected void initListener() {
+        ((FragmentFeature2Binding) dataBinding).btn.setOnClickListener(v -> navController.navigate(R.id.action_feature2Fragment_to_feature2_1Fragment));
+    }
 }

@@ -32,6 +32,16 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initNavigationComponent() {
         navController = Navigation.findNavController(MainActivity.this, R.id.navMainHostFragment);
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            switch (destination.getId()) {
+                case R.id.feature2Fragment:
+                    dataBinding.setIsShowBottomNavigation(true);
+                    break;
+                default:
+                    dataBinding.setIsShowBottomNavigation(false);
+                    break;
+            }
+        });
     }
 
     @Override

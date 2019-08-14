@@ -14,7 +14,15 @@
         android:id="@+id/feature2Fragment"
         android:name="com.lionel.mvvm_lifedata_navigation_realmp.features.main.Feature2Fragment"
         android:label="fragment_feature2"
-        tools:layout="@layout/fragment_feature2" />
+        tools:layout="@layout/fragment_feature2" >
+        <action
+            android:id="@+id/action_feature2Fragment_to_feature2_1Fragment"
+            app:destination="@id/feature2_1Fragment"
+            app:enterAnim="@anim/enter_slide_right"
+            app:exitAnim="@anim/exit_slide_right"
+            app:popEnterAnim="@anim/enter_slide_left"
+            app:popExitAnim="@anim/exit_slide_left" />
+    </fragment>
     <fragment
         android:id="@+id/feature3Fragment"
         android:name="com.lionel.mvvm_lifedata_navigation_realmp.features.main.Feature3Fragment"
@@ -36,4 +44,9 @@
         android:name="com.lionel.mvvm_lifedata_navigation_realmp.features.feature4.Feature4Activity"
         android:label="activity_feature4"
         tools:layout="@layout/activity_feature4" />
+    <fragment
+        android:id="@+id/feature2_1Fragment"
+        android:name="com.lionel.mvvm_lifedata_navigation_realmp.Feature2_1Fragment"
+        android:label="fragment_feature2_1"
+        tools:layout="@layout/fragment_feature2_1" />
 </navigation>

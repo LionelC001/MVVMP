@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isShowBottomNavigation"
+            type="boolean" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -30,6 +39,7 @@
             android:layout_height="56dp"
             android:background="@color/colorGray"
             android:theme="@style/BottomNavigationTheme"
+            android:visibility="@{isShowBottomNavigation? View.GONE : View.VISIBLE}"
             app:itemIconSize="26dp"
             app:labelVisibilityMode="labeled"
             app:layout_constraintBottom_toBottomOf="parent"
