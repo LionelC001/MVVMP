@@ -1,4 +1,4 @@
-package com.lionel.mvvm_lifedata_navigation_realmp.features.feature4;
+package com.lionel.mvvm_lifedata_navigation_realmp.features.main;
 
 
 import android.os.Bundle;
