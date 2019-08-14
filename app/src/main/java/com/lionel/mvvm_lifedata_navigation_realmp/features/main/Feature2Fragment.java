@@ -1,13 +1,9 @@
 package com.lionel.mvvm_lifedata_navigation_realmp.features.main;
 
 
-import android.os.Bundle;
+import android.widget.ImageButton;
 
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import androidx.databinding.ViewDataBinding;
 
 import com.lionel.mvvm_lifedata_navigation_realmp.R;
 import com.lionel.mvvm_lifedata_navigation_realmp.base.BaseFragment;
@@ -15,6 +11,9 @@ import com.lionel.mvvm_lifedata_navigation_realmp.databinding.FragmentFeature2Bi
 
 public class Feature2Fragment extends BaseFragment {
 
+
+    private FragmentFeature2Binding dataBinding;
+    private ImageButton btn;
 
     public Feature2Fragment() {
         // Required empty public constructor
@@ -32,7 +31,13 @@ public class Feature2Fragment extends BaseFragment {
     }
 
     @Override
+    protected void initView(ViewDataBinding baseDataBinding) {
+        dataBinding = (FragmentFeature2Binding) baseDataBinding;
+        btn = dataBinding.btn;
+    }
+
+    @Override
     protected void initListener() {
-        ((FragmentFeature2Binding) dataBinding).btn.setOnClickListener(v -> navController.navigate(R.id.action_feature2Fragment_to_feature2_1Fragment));
+        btn.setOnClickListener(v -> navController.navigate(R.id.action_feature2Fragment_to_feature2_1Fragment));
     }
 }

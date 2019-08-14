@@ -1,13 +1,20 @@
 package com.lionel.mvvm_lifedata_navigation_realmp.features.feature4;
 
 
+import android.widget.Button;
+
+import androidx.databinding.ViewDataBinding;
+
 import com.lionel.mvvm_lifedata_navigation_realmp.R;
 import com.lionel.mvvm_lifedata_navigation_realmp.base.BaseFragment;
-import com.lionel.mvvm_lifedata_navigation_realmp.databinding.FragmentFeature43Binding;
+import com.lionel.mvvm_lifedata_navigation_realmp.databinding.FragmentFeature42Binding;
 
 
 public class Feature4_3Fragment extends BaseFragment {
 
+
+    private FragmentFeature42Binding dataBinding;
+    private Button btnDone;
 
     public Feature4_3Fragment() {
         // Required empty public constructor
@@ -25,9 +32,13 @@ public class Feature4_3Fragment extends BaseFragment {
     }
 
     @Override
+    protected void initView(ViewDataBinding baseDataBinding) {
+        dataBinding = (FragmentFeature42Binding) baseDataBinding;
+        btnDone = dataBinding.btnNext;
+    }
+
+    @Override
     protected void initListener() {
-        ((FragmentFeature43Binding)dataBinding).btnDone.setOnClickListener(v -> {
-            getActivity().finish();
-        });
+        btnDone.setOnClickListener(v -> getActivity().finish());
     }
 }

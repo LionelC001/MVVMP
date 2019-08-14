@@ -13,23 +13,22 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import com.lionel.mvvm_lifedata_navigation_realmp.R;
-
 public abstract class BaseFragment extends Fragment {
 
-    protected ViewDataBinding dataBinding;
+    protected ViewDataBinding baseDataBinding;
     protected NavController navController;
 
     protected abstract int getLayoutRes();
     protected abstract int getHostFragmentId();
+    protected abstract void initView(ViewDataBinding baseDataBinding);
     protected abstract void initListener();
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        dataBinding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false);
-        return dataBinding.getRoot();
+        baseDataBinding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false);
+        return baseDataBinding.getRoot();
     }
 
     @Override
@@ -37,9 +36,9 @@ public abstract class BaseFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         initNavigationComponent();
+        initView(baseDataBinding);
         initListener();
     }
-
 
 
     private void initNavigationComponent() {
