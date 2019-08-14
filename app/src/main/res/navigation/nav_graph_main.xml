@@ -46,7 +46,7 @@
         tools:layout="@layout/activity_feature4" />
     <fragment
         android:id="@+id/feature2_1Fragment"
-        android:name="com.lionel.mvvm_lifedata_navigation_realmp.Feature2_1Fragment"
+        android:name="com.lionel.mvvm_lifedata_navigation_realmp.features.feature2.Feature2_1Fragment"
         android:label="fragment_feature2_1"
         tools:layout="@layout/fragment_feature2_1" />
 </navigation>
