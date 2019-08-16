@@ -36,6 +36,11 @@ public class QRFragment extends BaseFragment {
     }
 
     @Override
+    protected void initViewModel() {
+
+    }
+
+    @Override
     protected void initView(ViewDataBinding baseDataBinding) {
         dataBinding = (FragmentQrBinding) baseDataBinding;
     }

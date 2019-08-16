@@ -31,6 +31,11 @@ public class Feature4Fragment extends BaseFragment {
     }
 
     @Override
+    protected void initViewModel() {
+
+    }
+
+    @Override
     protected void initView(ViewDataBinding baseDataBinding) {
         dataBinding = (FragmentFeature4Binding) baseDataBinding;
         btnNext = dataBinding.btnNext;

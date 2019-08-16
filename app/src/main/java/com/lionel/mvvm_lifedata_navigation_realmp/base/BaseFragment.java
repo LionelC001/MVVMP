@@ -20,11 +20,12 @@ public abstract class BaseFragment extends Fragment {
 
     protected ViewDataBinding baseDataBinding;
     protected NavController navController;
-    private Feature2ViewModel baseViewModel;
 
     protected abstract int getLayoutRes();
 
     protected abstract int getHostFragmentId();
+
+    protected abstract void initViewModel();
 
     protected abstract void initView(ViewDataBinding baseDataBinding);
 
@@ -34,7 +35,6 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         baseDataBinding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false);
-        baseViewModel = new ViewModelProvider(getActivity()).get(Feature2ViewModel.class);
         return baseDataBinding.getRoot();
     }
 
@@ -42,6 +42,7 @@ public abstract class BaseFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        initViewModel();
         initNavigationComponent();
         initView(baseDataBinding);
         initListener();
