@@ -24,15 +24,11 @@ public class Feature2_1Fragment extends BaseFragment {
 
 
     private FragmentFeature21Binding dataBinding;
-    private Feature2ViewModel viewModel;
+    private Feature2ViewModel mViewModel;
     private EditText mEdtSearch;
     private Button mBtnSearch;
     private RecyclerView mRecyclerViewSearch;
-
-    public Feature2_1Fragment() {
-        // Required empty public constructor
-    }
-
+    private Feature2_1Adapter mSearchAdapter;
 
     @Override
     protected int getLayoutRes() {
@@ -46,7 +42,7 @@ public class Feature2_1Fragment extends BaseFragment {
 
     @Override
     protected void initViewModel() {
-        viewModel = new ViewModelProvider(this).get(Feature2ViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(Feature2ViewModel.class);
     }
 
     @Override
@@ -61,17 +57,22 @@ public class Feature2_1Fragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
 
         initRecyclerView();
+        initObserve();
+    }
+
+    private void initObserve() {
+        mViewModel.getSearchResultLiveData().observe(this, gitHubResponse -> mSearchAdapter.setData(gitHubResponse.getItems()));
     }
 
     private void initRecyclerView() {
         mRecyclerViewSearch = dataBinding.recyclerViewSearch;
-        Feature2_1Adapter adapter = new Feature2_1Adapter();
+        mSearchAdapter = new Feature2_1Adapter();
         mRecyclerViewSearch.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
-        mRecyclerViewSearch.setAdapter(adapter);
+        mRecyclerViewSearch.setAdapter(mSearchAdapter);
     }
-
 
     @Override
     protected void initListener() {
+        mBtnSearch.setOnClickListener(v -> mViewModel.performSearch(mEdtSearch.getText().toString()));
     }
 }
