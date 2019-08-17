@@ -16,11 +16,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Feature2ViewModel extends AndroidViewModel {
+public class Feature2_1ViewModel extends AndroidViewModel {
     private final GithubService githubService;
     private MutableLiveData<GitHubResponse> mSearchResult = new MutableLiveData<>();
 
-    public Feature2ViewModel(@NonNull Application application) {
+    public Feature2_1ViewModel(@NonNull Application application) {
         super(application);
 
         githubService = ApiManager.getInstance().getGitHubService();
@@ -30,8 +30,8 @@ public class Feature2ViewModel extends AndroidViewModel {
         return mSearchResult;
     }
 
-    public void performSearch(String keyWrod) {
-        githubService.search(keyWrod, 1).enqueue(new Callback<GitHubResponse>() {
+    public void performSearch(String keyword) {
+        githubService.search(keyword, 1).enqueue(new Callback<GitHubResponse>() {
             @Override
             public void onResponse(Call<GitHubResponse> call, Response<GitHubResponse> response) {
                 if (response.body() != null) {

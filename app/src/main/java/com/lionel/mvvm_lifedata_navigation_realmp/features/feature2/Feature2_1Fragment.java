@@ -24,7 +24,7 @@ public class Feature2_1Fragment extends BaseFragment {
 
 
     private FragmentFeature21Binding dataBinding;
-    private Feature2ViewModel mViewModel;
+    private Feature2_1ViewModel mViewModel;
     private EditText mEdtSearch;
     private Button mBtnSearch;
     private RecyclerView mRecyclerViewSearch;
@@ -42,7 +42,7 @@ public class Feature2_1Fragment extends BaseFragment {
 
     @Override
     protected void initViewModel() {
-        mViewModel = new ViewModelProvider(this).get(Feature2ViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(Feature2_1ViewModel.class);
     }
 
     @Override
