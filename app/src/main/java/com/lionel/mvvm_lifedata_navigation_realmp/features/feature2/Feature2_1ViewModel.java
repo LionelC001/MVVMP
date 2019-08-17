@@ -23,7 +23,7 @@ public class Feature2_1ViewModel extends AndroidViewModel {
     public Feature2_1ViewModel(@NonNull Application application) {
         super(application);
 
-        githubService = ApiManager.getInstance().getGitHubService();
+        githubService = ApiManager.getGitHubService();
     }
 
     public MutableLiveData<GitHubResponse> getSearchResultLiveData() {
