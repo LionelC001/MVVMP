@@ -5,45 +5,29 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.LiveData;
+import androidx.paging.LivePagedListBuilder;
+import androidx.paging.PagedList;
 
-import com.google.gson.Gson;
 import com.lionel.mvvm_lifedata_navigation_realmp.common.model.response.GitHubResponse;
-import com.lionel.mvvm_lifedata_navigation_realmp.common.retrofit.ApiManager;
-import com.lionel.mvvm_lifedata_navigation_realmp.common.retrofit.service.GithubService;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import static com.lionel.mvvm_lifedata_navigation_realmp.features.feature2.Feature2_1DataSource.PAGE_SIZE;
 
 public class Feature2_1ViewModel extends AndroidViewModel {
-    private final GithubService githubService;
-    private MutableLiveData<GitHubResponse> mSearchResult = new MutableLiveData<>();
+    private LiveData<PagedList<GitHubResponse.ItemsBean>> mSearchPagedList;
 
     public Feature2_1ViewModel(@NonNull Application application) {
         super(application);
-
-        githubService = ApiManager.getGitHubService();
     }
 
-    public MutableLiveData<GitHubResponse> getSearchResultLiveData() {
-        return mSearchResult;
+    public LiveData<PagedList<GitHubResponse.ItemsBean>> getSearchPagedList() {
+        return mSearchPagedList;
     }
 
     public void performSearch(String keyword) {
-        githubService.search(keyword, 1).enqueue(new Callback<GitHubResponse>() {
-            @Override
-            public void onResponse(Call<GitHubResponse> call, Response<GitHubResponse> response) {
-                if (response.body() != null) {
-                    Log.d("<>", new Gson().toJson(response.body()));
-                    mSearchResult.setValue(response.body());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<GitHubResponse> call, Throwable t) {
-
-            }
-        });
+        Log.d("<>", "perfromSearch");
+        Feature2_1DataSourceFactory feature2_1DataSourceFactory = new Feature2_1DataSourceFactory(keyword);
+        PagedList.Config pagedListConfig = new PagedList.Config.Builder().setEnablePlaceholders(false).setPageSize(PAGE_SIZE).build();
+        mSearchPagedList = new LivePagedListBuilder(feature2_1DataSourceFactory, pagedListConfig).build();
     }
 }

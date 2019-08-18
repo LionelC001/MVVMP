@@ -5,57 +5,56 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
+import androidx.paging.PagedListAdapter;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lionel.mvvm_lifedata_navigation_realmp.R;
 import com.lionel.mvvm_lifedata_navigation_realmp.common.model.response.GitHubResponse;
 import com.lionel.mvvm_lifedata_navigation_realmp.databinding.ItemGithubSearchBinding;
 
-import java.util.ArrayList;
-import java.util.List;
+public class Feature2_1Adapter extends PagedListAdapter<GitHubResponse.ItemsBean, Feature2_1Adapter.Feature2_1ViewHolder> {
 
-public class Feature2_1Adapter extends RecyclerView.Adapter<Feature2_1Adapter.SearchViewHolder> {
 
-    private List<GitHubResponse.ItemsBean> mData = new ArrayList<>();
+    private static DiffUtil.ItemCallback<GitHubResponse.ItemsBean> diffCallback =
+            new DiffUtil.ItemCallback<GitHubResponse.ItemsBean>() {
+                @Override
+                public boolean areItemsTheSame(GitHubResponse.ItemsBean oldItem, GitHubResponse.ItemsBean newItem) {
+                    return oldItem.getId() == newItem.getId();
+                }
 
+                @Override
+                public boolean areContentsTheSame(GitHubResponse.ItemsBean oldItem, GitHubResponse.ItemsBean newItem) {
+                    return oldItem.getDescription().equals(newItem.getDescription());
+                }
+            };
 
     public Feature2_1Adapter() {
-
+        super(diffCallback);
     }
 
-    public void setData(List<GitHubResponse.ItemsBean> data) {
-        mData = data;
-        notifyDataSetChanged();
-    }
+    public class Feature2_1ViewHolder extends RecyclerView.ViewHolder {
+        private final ItemGithubSearchBinding mDataBinding;
 
-    public class SearchViewHolder extends RecyclerView.ViewHolder {
-        private final ItemGithubSearchBinding dataBinding;
-
-        public SearchViewHolder(@NonNull ItemGithubSearchBinding dataBinding) {
+        public Feature2_1ViewHolder(@NonNull ItemGithubSearchBinding dataBinding) {
             super(dataBinding.getRoot());
-
-            this.dataBinding = dataBinding;
+            this.mDataBinding = dataBinding;
         }
 
         public ItemGithubSearchBinding getDataBinding() {
-            return dataBinding;
+            return mDataBinding;
         }
     }
 
     @NonNull
     @Override
-    public SearchViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public Feature2_1ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemGithubSearchBinding dataBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_github_search, parent, false);
-        return new SearchViewHolder(dataBinding);
+        return new Feature2_1ViewHolder(dataBinding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SearchViewHolder holder, int position) {
-        holder.getDataBinding().setItemData(mData.get(position));
-    }
-
-    @Override
-    public int getItemCount() {
-        return mData.size();
+    public void onBindViewHolder(@NonNull Feature2_1ViewHolder holder, int position) {
+        holder.getDataBinding().setItemData(getItem(position));
     }
 }

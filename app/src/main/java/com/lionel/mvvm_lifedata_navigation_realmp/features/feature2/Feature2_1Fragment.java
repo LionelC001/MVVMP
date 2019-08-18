@@ -2,6 +2,7 @@ package com.lionel.mvvm_lifedata_navigation_realmp.features.feature2;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -60,10 +61,6 @@ public class Feature2_1Fragment extends BaseFragment {
         initObserve();
     }
 
-    private void initObserve() {
-        mViewModel.getSearchResultLiveData().observe(this, gitHubResponse -> mSearchAdapter.setData(gitHubResponse.getItems()));
-    }
-
     private void initRecyclerView() {
         mRecyclerViewSearch = dataBinding.recyclerViewSearch;
         mSearchAdapter = new Feature2_1Adapter();
@@ -71,8 +68,20 @@ public class Feature2_1Fragment extends BaseFragment {
         mRecyclerViewSearch.setAdapter(mSearchAdapter);
     }
 
+    private void initObserve() {
+        mViewModel.getSearchPagedList().observe(this, itemsBeans -> {
+            Log.d("<>", "obser");
+
+            mSearchAdapter.submitList(itemsBeans);
+        });
+    }
+
+
     @Override
     protected void initListener() {
-        mBtnSearch.setOnClickListener(v -> mViewModel.performSearch(mEdtSearch.getText().toString()));
+        mBtnSearch.setOnClickListener(v -> {
+            mViewModel.performSearch(mEdtSearch.getText().toString());
+            mSearchAdapter.submitList(null);
+        });
     }
 }
