@@ -2,7 +2,6 @@ package com.lionel.mvvm_lifedata_navigation_realmp.features.feature2;
 
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -69,19 +68,11 @@ public class Feature2_1Fragment extends BaseFragment {
     }
 
     private void initObserve() {
-        mViewModel.getSearchPagedList().observe(this, itemsBeans -> {
-            Log.d("<>", "obser");
-
-            mSearchAdapter.submitList(itemsBeans);
-        });
+        mViewModel.getSearchPagedList().observe(this, itemsBeans -> mSearchAdapter.submitList(itemsBeans));
     }
-
 
     @Override
     protected void initListener() {
-        mBtnSearch.setOnClickListener(v -> {
-            mViewModel.performSearch(mEdtSearch.getText().toString());
-            mSearchAdapter.submitList(null);
-        });
+        mBtnSearch.setOnClickListener(v -> mViewModel.performSearch(mEdtSearch.getText().toString()));
     }
 }
