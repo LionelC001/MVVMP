@@ -6,6 +6,50 @@
     app:startDestination="@id/feature1Fragment">
 
     <fragment
+        android:id="@+id/feature4_3Fragment"
+        android:name="com.lionel.mvvm_lifedata_navigation_realmp.features.feature4.Feature4_3Fragment"
+        android:label="fragment_feature4_3"
+        tools:layout="@layout/fragment_feature4_3" >
+        <action
+            android:id="@+id/action_feature4_3Fragment_to_feature4Fragment"
+            app:destination="@id/feature4Fragment"
+            app:enterAnim="@anim/enter_slide_left"
+            app:exitAnim="@anim/exit_slide_left"
+            app:popEnterAnim="@anim/enter_slide_right"
+            app:popExitAnim="@anim/exit_slide_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/feature4_2Fragment"
+        android:name="com.lionel.mvvm_lifedata_navigation_realmp.features.feature4.Feature4_2Fragment"
+        android:label="Feature4_2Fragment"
+        tools:layout="@layout/fragment_feature4_2">
+        <action
+            android:id="@+id/action_feature4_2Fragment_to_feature4_3Fragment"
+            app:destination="@id/feature4_3Fragment"
+            app:enterAnim="@anim/enter_slide_right"
+            app:exitAnim="@anim/exit_slide_right"
+            app:popEnterAnim="@anim/enter_slide_left"
+            app:popExitAnim="@anim/exit_slide_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/feature4_1Fragment"
+        android:name="com.lionel.mvvm_lifedata_navigation_realmp.features.feature4.feature4_1Fragment"
+        android:label="feature4_1Fragment"
+        tools:layout="@layout/fragment_feature4_1">
+        <action
+            android:id="@+id/action_feature4_1Fragment_to_feature4_2Fragment"
+            app:destination="@id/feature4_2Fragment"
+            app:enterAnim="@anim/enter_slide_right"
+            app:exitAnim="@anim/exit_slide_right"
+            app:popEnterAnim="@anim/enter_slide_left"
+            app:popExitAnim="@anim/exit_slide_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/QRFragment"
+        android:name="com.lionel.mvvm_lifedata_navigation_realmp.features.qr.QRFragment"
+        android:label="fragment_qr"
+        tools:layout="@layout/fragment_qr" />
+    <fragment
         android:id="@+id/feature1Fragment"
         android:name="com.lionel.mvvm_lifedata_navigation_realmp.features.main.Feature1Fragment"
         android:label="fragment_feature1"
@@ -14,7 +58,7 @@
         android:id="@+id/feature2Fragment"
         android:name="com.lionel.mvvm_lifedata_navigation_realmp.features.main.Feature2Fragment"
         android:label="fragment_feature2"
-        tools:layout="@layout/fragment_feature2" >
+        tools:layout="@layout/fragment_feature2">
         <action
             android:id="@+id/action_feature2Fragment_to_feature2_1Fragment"
             app:destination="@id/feature2_1Fragment"
@@ -34,19 +78,29 @@
         android:label="fragment_feature4"
         tools:layout="@layout/fragment_feature4">
         <action
-            android:id="@+id/action_feature4Fragment_to_feature4Activity"
-            app:destination="@id/feature4Activity"
-            app:enterAnim="@anim/fragment_close_enter"
-            app:exitAnim="@anim/fragment_close_exit" />
+            android:id="@+id/action_feature4Fragment_to_feature4_1Fragment"
+            app:destination="@id/feature4_1Fragment" />
+        <action
+            android:id="@+id/action_feature4Fragment_to_feature4_1Fragment2"
+            app:destination="@id/feature4_1Fragment" />
+        <action
+            android:id="@+id/action_feature4Fragment_to_feature4_1Fragment"
+            app:destination="@id/feature4_1Fragment"
+            app:enterAnim="@anim/enter_slide_right"
+            app:exitAnim="@anim/exit_slide_right"
+            app:popEnterAnim="@anim/enter_slide_left"
+            app:popExitAnim="@anim/exit_slide_left" />
     </fragment>
-    <activity
-        android:id="@+id/feature4Activity"
-        android:name="com.lionel.mvvm_lifedata_navigation_realmp.features.feature4.Feature4Activity"
-        android:label="activity_feature4"
-        tools:layout="@layout/activity_feature4" />
     <fragment
         android:id="@+id/feature2_1Fragment"
         android:name="com.lionel.mvvm_lifedata_navigation_realmp.features.feature2.Feature2_1Fragment"
         android:label="fragment_feature2_1"
         tools:layout="@layout/fragment_feature2_1" />
+    <action
+        android:id="@+id/action_global_QRFragment2"
+        app:destination="@id/QRFragment"
+        app:enterAnim="@anim/enter_slide_down"
+        app:exitAnim="@anim/exit_slide_down"
+        app:popEnterAnim="@anim/enter_slide_up"
+        app:popExitAnim="@anim/exit_slide_up" />
 </navigation>

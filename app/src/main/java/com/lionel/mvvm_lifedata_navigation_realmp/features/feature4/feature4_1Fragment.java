@@ -1,8 +1,15 @@
 package com.lionel.mvvm_lifedata_navigation_realmp.features.feature4;
 
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
 import com.lionel.mvvm_lifedata_navigation_realmp.R;
@@ -12,38 +19,35 @@ import com.lionel.mvvm_lifedata_navigation_realmp.databinding.FragmentFeature41B
 
 public class feature4_1Fragment extends BaseFragment {
 
-
     private FragmentFeature41Binding dataBinding;
     private Button btnNext;
 
-    public feature4_1Fragment() {
-        // Required empty public constructor
-    }
-
-
+    @Nullable
     @Override
-    protected int getLayoutRes() {
-        return R.layout.fragment_feature4_1;
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_feature4_1, container, false);
+        return dataBinding.getRoot();
     }
 
     @Override
-    protected int getHostFragmentId() {
-        return R.id.navFeature4HostFragment;
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        initView();
+        initViewModel();
+        initListener();
     }
 
-    @Override
-    protected void initViewModel() {
+    private void initViewModel() {
 
     }
 
-    @Override
-    protected void initView(ViewDataBinding baseDataBinding) {
-        dataBinding = (FragmentFeature41Binding) baseDataBinding;
+    private void initView() {
+
         btnNext = dataBinding.btnNext;
     }
 
-    @Override
-    protected void initListener() {
+    private void initListener() {
         btnNext.setOnClickListener(v -> navController.navigate(R.id.action_feature4_1Fragment_to_feature4_2Fragment));
     }
 }
