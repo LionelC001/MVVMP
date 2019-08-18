@@ -1,13 +1,17 @@
 package com.lionel.mvvm_lifedata_navigation_realmp.base;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
-public abstract class BaseActivity extends AppCompatActivity {
+import com.lionel.mvvm_lifedata_navigation_realmp.BR;
+import com.lionel.mvvm_lifedata_navigation_realmp.common.callback.ILoadingSetter;
+
+public abstract class BaseActivity extends AppCompatActivity implements ILoadingSetter {
     private ViewDataBinding baseDataBinding;
 
     protected abstract int getLayoutRes();
@@ -25,5 +29,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         initToolbar();
         initNavigationComponent();
         initBottomNavigation();
+    }
+
+
+    @Override
+    public void showLoading(boolean isShow){
+        baseDataBinding.setVariable(BR.isLoading, isShow);
     }
 }

@@ -21,10 +21,6 @@ import com.lionel.mvvm_lifedata_navigation_realmp.R;
 import com.lionel.mvvm_lifedata_navigation_realmp.base.BaseFragment;
 import com.lionel.mvvm_lifedata_navigation_realmp.databinding.FragmentFeature21Binding;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class Feature2_1Fragment extends BaseFragment {
 
 
@@ -33,6 +29,7 @@ public class Feature2_1Fragment extends BaseFragment {
     private EditText mEdtSearch;
     private Button mBtnSearch;
     private Feature2_1Adapter mSearchAdapter;
+
 
     @Nullable
     @Override
@@ -44,7 +41,6 @@ public class Feature2_1Fragment extends BaseFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Log.d("<>1", "onActivityCreate child");
 
         initView();
         initViewModel();
@@ -64,7 +60,10 @@ public class Feature2_1Fragment extends BaseFragment {
     }
 
     private void initListener() {
-        mBtnSearch.setOnClickListener(v -> mViewModel.performSearch(mEdtSearch.getText().toString()));
+        mBtnSearch.setOnClickListener(v -> {
+            mLoadingSetter.showLoading(true);
+            mViewModel.performSearch(mEdtSearch.getText().toString());
+        });
     }
 
     private void initRecyclerView() {
@@ -75,8 +74,10 @@ public class Feature2_1Fragment extends BaseFragment {
     }
 
     private void initObserve() {
-        mViewModel.getSearchPagedList().observe(this, itemsBeans -> mSearchAdapter.submitList(itemsBeans));
+        mViewModel.getSearchPagedList().observe(this, itemsBeans -> {
+            Log.d("<>", "initOBSERVE");
+            mLoadingSetter.showLoading(false);
+            mSearchAdapter.submitList(itemsBeans);
+        });
     }
-
-
 }
