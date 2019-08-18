@@ -16,10 +16,13 @@ import static com.lionel.mvvm_lifedata_navigation_realmp.features.feature2.Featu
 
 public class Feature2_1ViewModel extends AndroidViewModel {
     private final MutableLiveData<String> keywordLiveData = new MutableLiveData<>();
+    private final Feature2_1Repo mRepo;
     private final LiveData<PagedList<GitHubResponse.ItemsBean>> mSearchPagedList = Transformations.switchMap(keywordLiveData, this::getPagedList);
+
 
     public Feature2_1ViewModel(@NonNull Application application) {
         super(application);
+        mRepo = new Feature2_1Repo();
     }
 
     public LiveData<PagedList<GitHubResponse.ItemsBean>> getSearchPagedList() {
@@ -31,9 +34,6 @@ public class Feature2_1ViewModel extends AndroidViewModel {
     }
 
     private LiveData<PagedList<GitHubResponse.ItemsBean>> getPagedList(String input) {
-        Feature2_1DataSourceFactory feature2_1DataSourceFactory = new Feature2_1DataSourceFactory(input);
-        PagedList.Config pagedListConfig = new PagedList.Config.Builder().setPageSize(PAGE_SIZE).build();
-        LiveData<PagedList<GitHubResponse.ItemsBean>> pagedListLiveData = new LivePagedListBuilder(feature2_1DataSourceFactory, pagedListConfig).build();
-        return pagedListLiveData;
+        return mRepo.getPagedList(input);
     }
 }
