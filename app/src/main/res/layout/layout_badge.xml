@@ -1,0 +1,15 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginStart="20dp"
+        app:srcCompat="@drawable/bg_badge"
+        android:gravity="center"
+        android:padding="3dp" />
+</FrameLayout>
