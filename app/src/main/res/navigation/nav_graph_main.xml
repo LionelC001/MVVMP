@@ -79,12 +79,6 @@
         tools:layout="@layout/fragment_feature4">
         <action
             android:id="@+id/action_feature4Fragment_to_feature4_1Fragment"
-            app:destination="@id/feature4_1Fragment" />
-        <action
-            android:id="@+id/action_feature4Fragment_to_feature4_1Fragment2"
-            app:destination="@id/feature4_1Fragment" />
-        <action
-            android:id="@+id/action_feature4Fragment_to_feature4_1Fragment"
             app:destination="@id/feature4_1Fragment"
             app:enterAnim="@anim/enter_slide_right"
             app:exitAnim="@anim/exit_slide_right"
