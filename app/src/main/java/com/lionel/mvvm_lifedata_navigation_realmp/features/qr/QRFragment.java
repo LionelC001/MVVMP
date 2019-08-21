@@ -1,14 +1,7 @@
 package com.lionel.mvvm_lifedata_navigation_realmp.features.qr;
 
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 
 import com.lionel.mvvm_lifedata_navigation_realmp.R;
 import com.lionel.mvvm_lifedata_navigation_realmp.base.BaseFragment;
@@ -19,32 +12,34 @@ public class QRFragment extends BaseFragment {
 
     private FragmentQrBinding dataBinding;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_qr, container, false);
-        return dataBinding.getRoot();
+    protected int getLayoutRes() {
+        return R.layout.fragment_qr;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        initView();
-        initViewModel();
-        initListener();
+    protected boolean getIsEnableBack() {
+        return true;
     }
 
-
-    private void initView() {
+    @Override
+    protected void initViewModel() {
 
     }
 
-    private void initViewModel() {
+    @Override
+    protected void initView(ViewDataBinding baseDataBinding) {
+        dataBinding = (FragmentQrBinding) baseDataBinding;
 
     }
 
-    private void initListener() {
+    @Override
+    protected void initListener() {
+
+    }
+
+    @Override
+    protected void initObserve() {
 
     }
 }

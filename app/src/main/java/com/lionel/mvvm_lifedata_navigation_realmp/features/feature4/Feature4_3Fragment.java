@@ -1,19 +1,12 @@
 package com.lionel.mvvm_lifedata_navigation_realmp.features.feature4;
 
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 
 import com.lionel.mvvm_lifedata_navigation_realmp.R;
 import com.lionel.mvvm_lifedata_navigation_realmp.base.BaseFragment;
-import com.lionel.mvvm_lifedata_navigation_realmp.databinding.FragmentFeature42Binding;
 import com.lionel.mvvm_lifedata_navigation_realmp.databinding.FragmentFeature43Binding;
 
 
@@ -22,31 +15,34 @@ public class Feature4_3Fragment extends BaseFragment {
     private FragmentFeature43Binding dataBinding;
     private Button btnDone;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_feature4_3, container, false);
-        return dataBinding.getRoot();
+    protected int getLayoutRes() {
+        return R.layout.fragment_feature4_3;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        initView();
-        initViewModel();
-        initListener();
+    protected boolean getIsEnableBack() {
+        return true;
     }
 
-    private void initView() {
+    @Override
+    protected void initViewModel() {
+
+    }
+
+    @Override
+    protected void initView(ViewDataBinding baseDataBinding) {
+        dataBinding = (FragmentFeature43Binding) baseDataBinding;
         btnDone = dataBinding.btnDone;
     }
 
-    private void initViewModel() {
-
+    @Override
+    protected void initListener() {
+        btnDone.setOnClickListener(v -> navController.navigate(R.id.action_feature4_3Fragment_to_feature4Fragment));
     }
 
-    private void initListener() {
-        btnDone.setOnClickListener(v -> navController.navigate(R.id.action_feature4_3Fragment_to_feature4Fragment));
+    @Override
+    protected void initObserve() {
+
     }
 }

@@ -1,18 +1,10 @@
 package com.lionel.mvvm_lifedata_navigation_realmp.features.feature2;
 
 
-import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
+import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,8 +14,6 @@ import com.lionel.mvvm_lifedata_navigation_realmp.base.BaseFragment;
 import com.lionel.mvvm_lifedata_navigation_realmp.databinding.FragmentFeature21Binding;
 
 public class Feature2_1Fragment extends BaseFragment {
-
-
     private FragmentFeature21Binding dataBinding;
     private Feature2_1ViewModel mViewModel;
     private EditText mEdtSearch;
@@ -31,39 +21,27 @@ public class Feature2_1Fragment extends BaseFragment {
     private Feature2_1Adapter mSearchAdapter;
 
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_feature2_1, container, false);
-        return dataBinding.getRoot();
+    protected int getLayoutRes() {
+        return R.layout.fragment_feature2_1;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        initView();
-        initViewModel();
-        initListener();
-        initRecyclerView();
-        initObserve();
+    protected boolean getIsEnableBack() {
+        return true;
     }
 
-
-    private void initViewModel() {
+    @Override
+    protected void initViewModel() {
         mViewModel = new ViewModelProvider(this).get(Feature2_1ViewModel.class);
     }
 
-    protected void initView() {
+    @Override
+    protected void initView(ViewDataBinding baseDataBinding) {
+        dataBinding = (FragmentFeature21Binding) baseDataBinding;
         mEdtSearch = dataBinding.edtSearch;
         mBtnSearch = dataBinding.btnSearch;
-    }
-
-    private void initListener() {
-        mBtnSearch.setOnClickListener(v -> {
-            mLoadingSetter.showLoading(true);
-            mViewModel.performSearch(mEdtSearch.getText().toString());
-        });
+        initRecyclerView();
     }
 
     private void initRecyclerView() {
@@ -73,9 +51,18 @@ public class Feature2_1Fragment extends BaseFragment {
         mRecyclerViewSearch.setAdapter(mSearchAdapter);
     }
 
-    private void initObserve() {
+
+    @Override
+    protected void initListener() {
+        mBtnSearch.setOnClickListener(v -> {
+            mLoadingSetter.showLoading(true);
+            mViewModel.performSearch(mEdtSearch.getText().toString());
+        });
+    }
+
+    @Override
+    protected void initObserve() {
         mViewModel.getSearchPagedList().observe(this, itemsBeans -> {
-            Log.d("<>", "initOBSERVE");
             mLoadingSetter.showLoading(false);
             mSearchAdapter.submitList(itemsBeans);
         });

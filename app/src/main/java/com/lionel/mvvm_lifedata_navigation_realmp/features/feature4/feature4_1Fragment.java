@@ -1,15 +1,8 @@
 package com.lionel.mvvm_lifedata_navigation_realmp.features.feature4;
 
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
 import com.lionel.mvvm_lifedata_navigation_realmp.R;
@@ -22,37 +15,35 @@ public class feature4_1Fragment extends BaseFragment {
     private FragmentFeature41Binding dataBinding;
     private Button btnNext;
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_feature4_1, container, false);
-        return dataBinding.getRoot();
-    }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        initScrollListener();
-        initView();
-        initViewModel();
-        initListener();
+    protected int getLayoutRes() {
+        return R.layout.fragment_feature4_1;
     }
 
-    private void initScrollListener() {
-        setSwipeBackListener(dataBinding.getRoot());
+    @Override
+    protected boolean getIsEnableBack() {
+        return true;
     }
 
-    private void initViewModel() {
+    @Override
+    protected void initViewModel() {
 
     }
 
-    private void initView() {
-
+    @Override
+    protected void initView(ViewDataBinding baseDataBinding) {
+        dataBinding = (FragmentFeature41Binding) baseDataBinding;
         btnNext = dataBinding.btnNext;
     }
 
-    private void initListener() {
+    @Override
+    protected void initListener() {
         btnNext.setOnClickListener(v -> navController.navigate(R.id.action_feature4_1Fragment_to_feature4_2Fragment));
+    }
+
+    @Override
+    protected void initObserve() {
+
     }
 }

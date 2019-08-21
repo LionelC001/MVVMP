@@ -1,15 +1,9 @@
 package com.lionel.mvvm_lifedata_navigation_realmp.features.main;
 
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 
 import com.lionel.mvvm_lifedata_navigation_realmp.R;
 import com.lionel.mvvm_lifedata_navigation_realmp.base.BaseFragment;
@@ -17,35 +11,37 @@ import com.lionel.mvvm_lifedata_navigation_realmp.databinding.FragmentFeature2Bi
 
 public class Feature2Fragment extends BaseFragment {
 
-
     private FragmentFeature2Binding dataBinding;
     private ImageButton btn;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_feature2, container, false);
-        return dataBinding.getRoot();
+    protected int getLayoutRes() {
+        return R.layout.fragment_feature2;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        initView();
-        initViewModel();
-        initListener();
+    protected boolean getIsEnableBack() {
+        return true;
     }
 
-    private void initView() {
+    @Override
+    protected void initViewModel() {
+
+    }
+
+    @Override
+    protected void initView(ViewDataBinding baseDataBinding) {
+        dataBinding = (FragmentFeature2Binding) baseDataBinding;
         btn = dataBinding.btn;
     }
 
-    private void initViewModel() {
-
+    @Override
+    protected void initListener() {
+        btn.setOnClickListener(v -> navController.navigate(R.id.action_feature2Fragment_to_feature2_1Fragment));
     }
 
-    private void initListener() {
-        btn.setOnClickListener(v -> navController.navigate(R.id.action_feature2Fragment_to_feature2_1Fragment));
+    @Override
+    protected void initObserve() {
+
     }
 }
