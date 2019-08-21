@@ -23,9 +23,9 @@ public abstract class BaseFragment extends Fragment implements ISwipeBackCallbac
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if (context instanceof ILoadingSetter) {
+        try {
             mLoadingSetter = (ILoadingSetter) context;
-        } else {
+        } catch (ClassCastException e) {
             throw new RuntimeException(context.toString()
                     + " must implement ILoadingSetter");
         }
