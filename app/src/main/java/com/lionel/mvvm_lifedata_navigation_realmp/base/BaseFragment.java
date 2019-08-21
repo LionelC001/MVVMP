@@ -2,9 +2,6 @@ package com.lionel.mvvm_lifedata_navigation_realmp.base;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -53,7 +50,7 @@ public abstract class BaseFragment extends Fragment implements ISwipeBackCallbac
 
 
     protected void setSwipeBackListener(View view) {
-        new SwipeBackHelper().initSwipeBack(getActivity(), view, BaseFragment.this);
+        new SwipeBackHelper().initSwipeBackFunc(getActivity(), view, BaseFragment.this);
     }
 
     @Override
