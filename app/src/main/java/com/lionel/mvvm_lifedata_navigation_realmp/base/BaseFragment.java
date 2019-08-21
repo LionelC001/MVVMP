@@ -51,10 +51,9 @@ public abstract class BaseFragment extends Fragment implements ISwipeBackCallbac
         navController = Navigation.findNavController(getActivity(), R.id.navMainHostFragment);
     }
 
+
     protected void setSwipeBackListener(View view) {
-        SwipeBackHelper helper = new SwipeBackHelper(BaseFragment.this);
-        GestureDetector gestureDetector =  new GestureDetector(getActivity(), helper);
-        view.setOnTouchListener(((v, event) -> gestureDetector.onTouchEvent(event)));
+        new SwipeBackHelper().initSwipeBack(getActivity(), view, BaseFragment.this);
     }
 
     @Override
