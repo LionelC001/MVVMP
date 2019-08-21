@@ -2,6 +2,10 @@ package com.lionel.mvvm_lifedata_navigation_realmp.base;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,8 +15,10 @@ import androidx.navigation.Navigation;
 
 import com.lionel.mvvm_lifedata_navigation_realmp.R;
 import com.lionel.mvvm_lifedata_navigation_realmp.common.callback.ILoadingSetter;
+import com.lionel.mvvm_lifedata_navigation_realmp.common.callback.ISwipeBackCallback;
+import com.lionel.mvvm_lifedata_navigation_realmp.common.utils.SwipeBackHelper;
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment implements ISwipeBackCallback {
 
     protected NavController navController;
     protected ILoadingSetter mLoadingSetter;
@@ -43,5 +49,16 @@ public abstract class BaseFragment extends Fragment {
 
     private void initNavigationComponent() {
         navController = Navigation.findNavController(getActivity(), R.id.navMainHostFragment);
+    }
+
+    protected void setSwipeBackListener(View view) {
+        SwipeBackHelper helper = new SwipeBackHelper(BaseFragment.this);
+        GestureDetector gestureDetector =  new GestureDetector(getActivity(), helper);
+        view.setOnTouchListener(((v, event) -> gestureDetector.onTouchEvent(event)));
+    }
+
+    @Override
+    public void onSwipeBack() {
+        navController.navigateUp();
     }
 }

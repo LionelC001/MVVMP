@@ -33,9 +33,14 @@ public class feature4_1Fragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        initScrollListener();
         initView();
         initViewModel();
         initListener();
+    }
+
+    private void initScrollListener() {
+        setSwipeBackListener(dataBinding.getRoot());
     }
 
     private void initViewModel() {
