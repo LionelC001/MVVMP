@@ -14,12 +14,12 @@ import com.lionel.mvvm_lifedata_navigation_realmp.R;
 
 import java.util.List;
 
-public class Featue3_1ViewAdapter extends PagerAdapter {
+public class Feature3_1ViewAdapter extends PagerAdapter {
 
     private final Context context;
     private final List<Integer> listSrcView;
 
-    public Featue3_1ViewAdapter(Context context, List<Integer> data) {
+    public Feature3_1ViewAdapter(Context context, List<Integer> data) {
         this.context = context;
         this.listSrcView = data;
     }
