@@ -14,6 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.lionel.mvvm_lifedata_navigation_realmp.R;
 import com.lionel.mvvm_lifedata_navigation_realmp.base.BaseActivity;
 import com.lionel.mvvm_lifedata_navigation_realmp.common.callback.IBottomBadgeSetter;
+import com.lionel.mvvm_lifedata_navigation_realmp.common.callback.IToolbarSetter;
 import com.lionel.mvvm_lifedata_navigation_realmp.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ import java.util.List;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
-public class MainActivity extends BaseActivity implements IBottomBadgeSetter {
+public class MainActivity extends BaseActivity implements IBottomBadgeSetter, IToolbarSetter {
 
     private ActivityMainBinding dataBinding;
     private NavController navController;
@@ -53,6 +54,7 @@ public class MainActivity extends BaseActivity implements IBottomBadgeSetter {
                 case R.id.feature3Fragment:
                 case R.id.feature4Fragment:
                     dataBinding.setIsShowBottomNavigation(true);
+                    showToolbar(true);
                     break;
                 default:
                     dataBinding.setIsShowBottomNavigation(false);
@@ -93,5 +95,10 @@ public class MainActivity extends BaseActivity implements IBottomBadgeSetter {
     @Override
     public void refreshBadge(int position, boolean isVisible) {
         listImgBadges.get(position).setVisibility(isVisible ? VISIBLE : GONE);
+    }
+
+    @Override
+    public void showToolbar(boolean show) {
+        dataBinding.layoutToolbar.setNotShowToolbar(!show);
     }
 }

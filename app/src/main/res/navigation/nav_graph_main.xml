@@ -9,7 +9,7 @@
         android:id="@+id/feature4_3Fragment"
         android:name="com.lionel.mvvm_lifedata_navigation_realmp.features.feature4.Feature4_3Fragment"
         android:label="fragment_feature4_3"
-        tools:layout="@layout/fragment_feature4_3" >
+        tools:layout="@layout/fragment_feature4_3">
         <action
             android:id="@+id/action_feature4_3Fragment_to_feature4Fragment"
             app:destination="@id/feature4Fragment"
@@ -71,7 +71,15 @@
         android:id="@+id/feature3Fragment"
         android:name="com.lionel.mvvm_lifedata_navigation_realmp.features.main.Feature3Fragment"
         android:label="fragment_feature3"
-        tools:layout="@layout/fragment_feature3" />
+        tools:layout="@layout/fragment_feature3">
+        <action
+            android:id="@+id/action_feature3Fragment_to_feature3_1Fragment"
+            app:destination="@id/feature3_1Fragment"
+            app:enterAnim="@anim/enter_slide_right"
+            app:exitAnim="@anim/exit_slide_right"
+            app:popEnterAnim="@anim/enter_slide_left"
+            app:popExitAnim="@anim/exit_slide_left" />
+    </fragment>
     <fragment
         android:id="@+id/feature4Fragment"
         android:name="com.lionel.mvvm_lifedata_navigation_realmp.features.main.Feature4Fragment"
@@ -97,4 +105,9 @@
         app:exitAnim="@anim/exit_slide_down"
         app:popEnterAnim="@anim/enter_slide_up"
         app:popExitAnim="@anim/exit_slide_up" />
+    <fragment
+        android:id="@+id/feature3_1Fragment"
+        android:name="com.lionel.mvvm_lifedata_navigation_realmp.features.feature3.Feature3_1Fragment"
+        android:label="feature3_1Fragment"
+        tools:layout="@layout/fragment_feature3_1" />
 </navigation>
