@@ -13,6 +13,9 @@ import com.lionel.mvvm_lifedata_navigation_realmp.common.callback.IToolbarSetter
 import com.lionel.mvvm_lifedata_navigation_realmp.databinding.FragmentFeature31Binding;
 import com.lionel.mvvm_lifedata_navigation_realmp.databinding.ToolbarNormalBinding;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Feature3_1Fragment extends BaseFragment {
 
@@ -51,8 +54,23 @@ public class Feature3_1Fragment extends BaseFragment {
     }
 
     private void initViewPager() {
+        List<Integer> data = initViewData();
         ViewPager viewPager = dataBinding.viewPager;
+        Featue3_1ViewAdapter adapter = new Featue3_1ViewAdapter(getActivity(), data);
+        viewPager.setAdapter(adapter);
         TabLayout tabLayoutTab = dataBinding.tabLayoutDot;
+        tabLayoutTab.setupWithViewPager(viewPager);
+    }
+
+    private List<Integer> initViewData() {
+        List<Integer> data = new ArrayList<>();
+        data.add(R.drawable.bg_1);
+        data.add(R.drawable.bg_2);
+        data.add(R.drawable.bg_3);
+        data.add(R.drawable.bg_4);
+        data.add(R.drawable.bg_5);
+        data.add(R.drawable.bg_6);
+        return data;
     }
 
     @Override
