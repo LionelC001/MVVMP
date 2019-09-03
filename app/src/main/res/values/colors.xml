@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#FF9800</color>
+    <color name="colorPrimaryDefault">#FF9800</color>
+    <color name="colorPrimaryDarkDeepYellow">#6B4000</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorGold">#FFC107</color>
+    <color name="colorDeepGold">#C59400</color>
     <color name="colorGray">#E4E4E4</color>
     <color name="colorTransparent">#36000000</color>
     <color name="colorDeepGray">#707070</color>

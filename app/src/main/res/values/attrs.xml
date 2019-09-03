@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="colorToolbarColor" format="reference|color" />
+    <attr name="colorBackground" format="reference|color" />
+    <attr name="colorText" format="reference|color" />
+</resources>

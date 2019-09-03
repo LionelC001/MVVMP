@@ -13,6 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.lionel.mvvm_lifedata_navigation_realmp.R;
 import com.lionel.mvvm_lifedata_navigation_realmp.base.BaseActivity;
 import com.lionel.mvvm_lifedata_navigation_realmp.common.callback.IBottomBadgeSetter;
+import com.lionel.mvvm_lifedata_navigation_realmp.common.callback.IThemeSetter;
 import com.lionel.mvvm_lifedata_navigation_realmp.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
@@ -20,12 +21,23 @@ import java.util.List;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
+import static com.lionel.mvvm_lifedata_navigation_realmp.common.utils.Constant.TYPE_THEME_LIGHT;
 
-public class MainActivity extends BaseActivity implements IBottomBadgeSetter {
+public class MainActivity extends BaseActivity implements IBottomBadgeSetter , IThemeSetter {
 
     private ActivityMainBinding dataBinding;
     private NavController navController;
     private List<View> listImgBadges = new ArrayList<>();
+    public static int typeTheme;
+
+    @Override
+    protected int getThemeStyle() {
+        if(typeTheme == TYPE_THEME_LIGHT) {
+            return R.style.AppTheme;
+        } else {
+            return R.style.DarkTheme;
+        }
+    }
 
     @Override
     protected int getLayoutRes() {
@@ -92,5 +104,11 @@ public class MainActivity extends BaseActivity implements IBottomBadgeSetter {
     @Override
     public void refreshBadge(int position, boolean isVisible) {
         listImgBadges.get(position).setVisibility(isVisible ? VISIBLE : GONE);
+    }
+
+    @Override
+    public void onThemeChanged(int type) {
+        typeTheme = type;
+        recreate();
     }
 }

@@ -14,6 +14,7 @@ import com.lionel.mvvm_lifedata_navigation_realmp.common.callback.ILoadingSetter
 public abstract class BaseActivity extends AppCompatActivity implements ILoadingSetter {
     private ViewDataBinding baseDataBinding;
 
+    protected abstract int getThemeStyle();
     protected abstract int getLayoutRes();
     protected abstract void initView(ViewDataBinding baseDataBinding);
     protected abstract void initToolbar();
@@ -22,6 +23,7 @@ public abstract class BaseActivity extends AppCompatActivity implements ILoading
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        setTheme(getThemeStyle());
         super.onCreate(savedInstanceState);
         baseDataBinding = DataBindingUtil.setContentView(BaseActivity.this, getLayoutRes());
 
