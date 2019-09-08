@@ -70,7 +70,17 @@ public class Feature3Fragment extends BaseFragment {
     @Override
     protected void initListener() {
         btnGo.setOnClickListener(v -> navController.navigate(R.id.action_feature3Fragment_to_feature3_1Fragment));
-        imgAvatar.setOnClickListener(v -> takePhoto());
+        imgAvatar.setOnClickListener(v -> pickPhoto());
+    }
+
+    private void pickPhoto() {
+        Intent getIntent = new Intent(Intent.ACTION_GET_CONTENT);
+        Intent pickIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        getIntent.setType("image/*");
+        pickIntent.setType("image/*");
+        Intent chooserIntent = Intent.createChooser(getIntent, "Select Wallpaper");
+        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{pickIntent});
+        startActivityForResult(chooserIntent, REQUEST_CODE_PICK_PHOTO);
     }
 
     private void takePhoto() {
@@ -101,6 +111,11 @@ public class Feature3Fragment extends BaseFragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
+
+                case REQUEST_CODE_PICK_PHOTO:
+                    photoTakingUri = data.getData();
+                    cropPhoto();
+                    break;
                 case REQUEST_CODE_TAKE_PHOTO:
                     cropPhoto();
                     break;
